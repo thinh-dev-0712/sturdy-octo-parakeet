@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS cơ bản cho các nút tăng giảm số lượng */
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .quantity button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 0;
+        }
+
+        .quantity button:active {
+            background-color: #ddd;
+        }
+
+        .quantity button:disabled {
+            cursor: not-allowed;
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="formdetail">    
+        <form action="" method="post">
+            <!-- Các phần tử khác -->
+
+            <div class="quantity">
+                <button type="button" id="decrement">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button type="button" id="increment">+</button>
+            </div>
+
+            <br>
+            <div class="hanhdong">
+                <input type="submit" value="Thêm vào giỏ">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript để xử lý các nút tăng giảm
+        document.addEventListener('DOMContentLoaded', function() {
+            const incrementButton = document.getElementById('increment');
+            const decrementButton = document.getElementById('decrement');
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value, 10);
+
+            incrementButton.addEventListener('click', function() {
+                quantity += 1;
+                quantityInput.value = quantity;
+            });
+
+            decrementButton.addEventListener('click', function() {
+                if (quantity > 1) {
+                    quantity -= 1;
+                    quantityInput.value = quantity;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
